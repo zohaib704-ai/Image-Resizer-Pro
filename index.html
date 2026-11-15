@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ImageResizer Pro — Free Browser Image Editor, Compressor & OCR</title>
+<meta name="description" content="Ten free image tools in your browser: enhance, filter, crop, resize, compress, add text, read text (OCR), camera with zoom, and Google Lens. No uploads, no signup.">
+<meta name="theme-color" content="#f6f1e7">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo"><a href="index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
+<div class="nav-links">
+<a href="index.html" class="active">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mobile-menu" id="mobileMenu">
+<a href="index.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-inner">
+<span class="hero-eyebrow">Ten tools · One page · Zero uploads</span>
+<h1>Edit, compress &amp; read your photos <em>right in the browser</em>.</h1>
+<p class="hero-sub">A no-nonsense image workshop. Enhance, crop, resize, compress, add text, extract text, and shoot with your camera. Your files never leave your device.</p>
+<div class="hero-actions">
+<button class="btn btn-primary" id="uploadBtn">
+<span class="btn-icon">↑</span>
+<span class="btn-text">Upload Image<small>JPG · PNG · WEBP · up to 20MB</small></span>
+</button>
+<button class="btn btn-accent" id="cameraBtn">
+<span class="btn-icon">◉</span>
+<span class="btn-text">Open Camera<small>1×–10× zoom · rear camera</small></span>
+</button>
+<input type="file" id="fileInput" accept="image/*" hidden>
+</div>
+
+<div class="hero-stats">
+<div class="stat"><span class="stat-num">10</span><span class="stat-label">Tools</span></div>
+<div class="stat"><span class="stat-num">0</span><span class="stat-label">Uploads</span></div>
+<div class="stat"><span class="stat-num">100<em>%</em></span><span class="stat-label">Private</span></div>
+<div class="stat"><span class="stat-num">$0</span><span class="stat-label">Forever</span></div>
+</div>
+</div>
+</section>
+
+<!-- WORKSPACE -->
+<section class="workspace" id="workspace">
+<div class="container">
+
+<div class="ws-toolbar">
+<div class="ws-filename mono" id="wsFilename">image.jpg</div>
+<div class="ws-actions">
+<button class="ws-btn" id="resetBtn">↺ Reset</button>
+<button class="ws-btn primary" id="downloadBtn">↓ Download</button>
+<button class="ws-btn" id="newImageBtn">+ New Image</button>
+</div>
+</div>
+
+<div class="canvas-area" id="canvasArea">
+<canvas id="canvas"></canvas>
+</div>
+
+<!-- TOOL PANELS -->
+<div id="toolPanels">
+
+<!-- ENHANCE -->
+<div class="tool-panel" data-tool="enhance">
+<div class="panel-head">
+<div class="panel-title"><h3>Enhance</h3><small>Adjust</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Tune the lighting, colour, and clarity. Changes preview live — click Apply to commit.</p>
+<div class="ctrl"><label>Brightness <span class="val" id="v-brightness">100%</span></label><input type="range" id="brightness" min="0" max="200" value="100"></div>
+<div class="ctrl"><label>Contrast <span class="val" id="v-contrast">100%</span></label><input type="range" id="contrast" min="0" max="200" value="100"></div>
+<div class="ctrl"><label>Saturation <span class="val" id="v-saturate">100%</span></label><input type="range" id="saturate" min="0" max="200" value="100"></div>
+<div class="ctrl"><label>Warmth <span class="val" id="v-warmth">0</span></label><input type="range" id="warmth" min="-50" max="50" value="0"></div>
+<div class="ctrl"><label>Clarity (sharpen) <span class="val" id="v-clarity">0</span></label><input type="range" id="clarity" min="0" max="100" value="0"></div>
+<div class="ctrl"><label>Denoise <span class="val" id="v-denoise">0</span></label><input type="range" id="denoise" min="0" max="5" step="0.5" value="0"></div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyEnhance">Apply to Image</button>
+<button class="ws-btn" id="resetEnhance">Reset Values</button>
+</div>
+</div>
+</div>
+
+<!-- FILTERS -->
+<div class="tool-panel" data-tool="filters">
+<div class="panel-head">
+<div class="panel-title"><h3>Filters</h3><small>One-tap looks</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Pick a preset. Apply to commit it permanently to the image.</p>
+<div class="filter-grid" id="filterGrid">
+<button class="filter-chip active" data-filter="none">Original</button>
+<button class="filter-chip" data-filter="grayscale(100%)">B&amp;W</button>
+<button class="filter-chip" data-filter="sepia(80%)">Sepia</button>
+<button class="filter-chip" data-filter="contrast(120%) saturate(140%)">Vivid</button>
+<button class="filter-chip" data-filter="hue-rotate(-15deg) saturate(90%)">Cool</button>
+<button class="filter-chip" data-filter="hue-rotate(15deg) saturate(120%) brightness(105%)">Warm</button>
+<button class="filter-chip" data-filter="contrast(90%) brightness(110%) saturate(80%)">Fade</button>
+<button class="filter-chip" data-filter="contrast(140%) brightness(90%) saturate(120%)">Drama</button>
+<button class="filter-chip" data-filter="invert(100%)">Invert</button>
+<button class="filter-chip" data-filter="blur(2px)">Blur</button>
+</div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyFilter">Apply to Image</button>
+</div>
+</div>
+</div>
+
+<!-- TRANSFORM -->
+<div class="tool-panel" data-tool="transform">
+<div class="panel-head">
+<div class="panel-title"><h3>Rotate &amp; Flip</h3><small>Orientation</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">These actions commit immediately — no Apply needed.</p>
+<div class="transform-grid">
+<button class="transform-btn" data-transform="rotl">↺<span>Left 90°</span></button>
+<button class="transform-btn" data-transform="rotr">↻<span>Right 90°</span></button>
+<button class="transform-btn" data-transform="fliph">⇆<span>Flip H</span></button>
+<button class="transform-btn" data-transform="flipv">⇅<span>Flip V</span></button>
+</div>
+</div>
+</div>
+
+<!-- CROP -->
+<div class="tool-panel" data-tool="crop">
+<div class="panel-head">
+<div class="panel-title"><h3>Crop</h3><small>Drag to select</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Drag the handles to select your crop. Pick a ratio or crop freely.</p>
+<div class="crop-wrap"><img id="cropImage" alt="To crop"></div>
+<div class="ctrl"><label>Ratio</label>
+<select id="cropRatio">
+<option value="NaN">Free</option>
+<option value="1">1 : 1 Square</option>
+<option value="0.8">4 : 5 Portrait</option>
+<option value="1.333">4 : 3 Classic</option>
+<option value="1.777">16 : 9 Wide</option>
+<option value="0.5625">9 : 16 Story</option>
+</select>
+</div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyCrop">Apply Crop</button>
+</div>
+</div>
+</div>
+
+<!-- RESIZE -->
+<div class="tool-panel" data-tool="resize">
+<div class="panel-head">
+<div class="panel-title"><h3>Resize</h3><small>Dimensions</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Enter new dimensions in pixels. Keep the aspect ratio locked unless you need a custom shape.</p>
+<div class="ctrl-row">
+<div class="ctrl"><label>Width <span class="val">px</span></label><input type="number" id="rsWidth" min="10" max="8000"></div>
+<div class="ctrl"><label>Height <span class="val">px</span></label><input type="number" id="rsHeight" min="10" max="8000"></div>
+</div>
+<div class="ctrl"><label><span>Lock aspect ratio</span></label>
+<select id="rsLock">
+<option value="1">Locked</option>
+<option value="0">Unlocked</option>
+</select>
+</div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyResize">Apply Resize</button>
+</div>
+</div>
+</div>
+
+<!-- COMPRESS -->
+<div class="tool-panel" data-tool="compress">
+<div class="panel-head">
+<div class="panel-title"><h3>Compress</h3><small>File size</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Pick a quality level and format, then download the compressed version.</p>
+<div class="ctrl"><label>Quality <span class="val" id="v-quality">80%</span></label><input type="range" id="cmpQuality" min="10" max="100" value="80"></div>
+<div class="ctrl"><label>Format</label>
+<select id="cmpFormat">
+<option value="image/jpeg">JPEG</option>
+<option value="image/webp">WEBP</option>
+<option value="image/png">PNG</option>
+</select>
+</div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyCompress">Compress &amp; Download</button>
+</div>
+<div class="download-tip" id="cmpInfo"></div>
+</div>
+</div>
+
+<!-- TEXT -->
+<div class="tool-panel" data-tool="text">
+<div class="panel-head">
+<div class="panel-title"><h3>Add Text</h3><small>Caption</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Type a caption. Preview updates live. Apply to bake it in.</p>
+<div class="ctrl"><label>Text</label><input type="text" id="txtInput" placeholder="Your caption…" maxlength="80"></div>
+<div class="ctrl-row">
+<div class="ctrl"><label>Size <span class="val" id="v-tsize">48px</span></label><input type="range" id="txtSize" min="12" max="200" value="48"></div>
+<div class="ctrl"><label>Color</label><input type="color" id="txtColor" value="#ffffff"></div>
+</div>
+<div class="ctrl-row">
+<div class="ctrl"><label>X <span class="val" id="v-tx">50%</span></label><input type="range" id="txtX" min="0" max="100" value="50"></div>
+<div class="ctrl"><label>Y <span class="val" id="v-ty">85%</span></label><input type="range" id="txtY" min="0" max="100" value="85"></div>
+</div>
+<div class="panel-apply">
+<button class="btn btn-primary" id="applyText">Apply Text</button>
+</div>
+</div>
+</div>
+
+<!-- OCR -->
+<div class="tool-panel" data-tool="ocr">
+<div class="panel-head">
+<div class="panel-title"><h3>Read Text (OCR)</h3><small>Tesseract</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Extract text from any image. The engine runs locally — no image is uploaded.</p>
+<div class="ctrl"><label>Language</label>
+<select id="ocrLang">
+<option value="eng">English</option>
+<option value="urd">Urdu</option>
+<option value="ara">Arabic</option>
+<option value="hin">Hindi</option>
+<option value="fra">French</option>
+<option value="spa">Spanish</option>
+<option value="deu">German</option>
+<option value="chi_sim">Chinese (Simplified)</option>
+</select>
+</div>
+<button class="btn btn-primary" id="ocrStart" style="width:100%;">Extract Text</button>
+<div class="ocr-progress" id="ocrProgress" style="display:none;">Loading…</div>
+<div class="ctrl" style="margin-top:16px;"><label>Extracted Text</label><div class="ocr-result" id="ocrResult">(No text extracted yet)</div></div>
+<button class="ws-btn" id="ocrCopy" style="margin-top:12px;">Copy Text</button>
+</div>
+</div>
+
+<!-- CAMERA (panel triggers modal) -->
+<div class="tool-panel" data-tool="camera">
+<div class="panel-head">
+<div class="panel-title"><h3>Camera</h3><small>Live capture</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Opens a full-screen camera with 1×–10× zoom. Requires camera permission from your browser.</p>
+<button class="btn btn-accent" id="openCameraBtn" style="width:100%;">Open Camera</button>
+</div>
+</div>
+
+<!-- LENS -->
+<div class="tool-panel" data-tool="lens">
+<div class="panel-head">
+<div class="panel-title"><h3>Google Lens</h3><small>Visual search</small></div>
+<button class="panel-close" data-close>Close</button>
+</div>
+<div class="panel-body">
+<p class="hint">Google Lens needs an image upload, so we'll help you hand it off cleanly: download the current image first, then open Lens in a new tab.</p>
+<button class="btn btn-primary" id="lensDownload" style="width:100%;margin-bottom:10px;">1. Download Current Image</button>
+<button class="btn btn-accent" id="lensOpen" style="width:100%;">2. Open Google Lens</button>
+</div>
+</div>
+
+</div><!-- /#toolPanels -->
+</div>
+</section>
+
+<!-- TOOLS OVERVIEW (below workspace when not in editor) -->
+<section class="section" id="toolsSection">
+<div class="container">
+<div class="section-head">
+<div>
+<span class="section-num">01 / TOOLS</span>
+<h2 class="section-title">Ten tools. All free. All local.</h2>
+</div>
+<p class="section-sub">Click any card to open that tool. If no image is loaded yet, you'll be prompted to upload one first.</p>
+</div>
+<div class="tools-grid" id="toolsGrid">
+<button class="tool-card" data-open="enhance"><span class="tool-num">01</span><span class="tool-icon">✦</span><span class="tool-name">Enhance</span><span class="tool-desc">Brightness, contrast, warmth, clarity, denoise.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="filters"><span class="tool-num">02</span><span class="tool-icon">◐</span><span class="tool-name">Filters</span><span class="tool-desc">Ten one-tap looks — B&amp;W, sepia, vivid, fade.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="transform"><span class="tool-num">03</span><span class="tool-icon">↻</span><span class="tool-name">Rotate &amp; Flip</span><span class="tool-desc">Straighten, mirror, and flip your photos.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="crop"><span class="tool-num">04</span><span class="tool-icon">◫</span><span class="tool-name">Crop</span><span class="tool-desc">Drag handles. Lock to a ratio. Apply.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="resize"><span class="tool-num">05</span><span class="tool-icon">⇲</span><span class="tool-name">Resize</span><span class="tool-desc">Set exact pixel dimensions with aspect lock.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="compress"><span class="tool-num">06</span><span class="tool-icon">↓</span><span class="tool-name">Compress</span><span class="tool-desc">Shrink JPEG, WEBP, PNG at chosen quality.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="text"><span class="tool-num">07</span><span class="tool-icon">T</span><span class="tool-name">Add Text</span><span class="tool-desc">Captions and watermarks with full control.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="ocr"><span class="tool-num">08</span><span class="tool-icon">◊</span><span class="tool-name">Read Text</span><span class="tool-desc">Extract text from any image in 8 languages.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="camera"><span class="tool-num">09</span><span class="tool-icon">◉</span><span class="tool-name">Camera</span><span class="tool-desc">Live capture with 1×–10× zoom.</span><span class="tool-arrow">→</span></button>
+<button class="tool-card" data-open="lens"><span class="tool-num">10</span><span class="tool-icon">◎</span><span class="tool-name">Google Lens</span><span class="tool-desc">Download and hand off to Lens in one click.</span><span class="tool-arrow">→</span></button>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+<div class="container">
+<div class="section-head">
+<div>
+<span class="section-num">02 / FAQ</span>
+<h2 class="section-title">Answers, briefly.</h2>
+</div>
+</div>
+<div class="content">
+<h2>Do my images get uploaded?</h2>
+<p>No. Every operation happens in your browser via JavaScript. Your images never touch a server, and we never see them. Close the tab and everything is gone.</p>
+<h2>What happens if my camera doesn't work?</h2>
+<p>Some browsers require HTTPS. On Vercel you're already on HTTPS, so it should work after you grant permission. On iOS Safari, only one camera stream can be active at a time — close other camera tabs first.</p>
+<h2>Is this really free?</h2>
+<p>Yes. The site is supported by non-intrusive advertising, so every tool stays free. No accounts, no paywalls.</p>
+<h2>Which formats can I upload and export?</h2>
+<p>Upload JPG, PNG, WEBP, GIF, or BMP. Export as JPEG, PNG, or WEBP.</p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>ImageResizer<em>Pro</em></h3>
+<p>Ten free tools for image editing, compression, and OCR. All local, all private.</p>
+</div>
+<div class="footer-col">
+<h4>Tools</h4>
+<a href="#" data-open="enhance">Enhance</a>
+<a href="#" data-open="crop">Crop</a>
+<a href="#" data-open="compress">Compress</a>
+<a href="#" data-open="ocr">OCR</a>
+</div>
+<div class="footer-col">
+<h4>Site</h4>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+</div>
+<div class="footer-bottom">© 2026 ImageResizer Pro · Built in the browser</div>
+</div>
+</footer>
+
+<!-- CAMERA MODAL -->
+<div class="modal" id="cameraModal">
+<div class="modal-inner">
+<div class="cam-topbar">
+<h3>Camera</h3>
+<span class="cam-badge" id="camZoomBadge">1.0×</span>
+<button class="cam-close" id="camClose">✕</button>
+</div>
+<div class="cam-stage">
+<video id="camVideo" autoplay playsinline muted></video>
+</div>
+<div class="cam-bottom">
+<div class="zoom-row">
+<button class="zoom-pill active" data-zoom="1">1×</button>
+<button class="zoom-pill" data-zoom="2">2×</button>
+<button class="zoom-pill" data-zoom="5">5×</button>
+<button class="zoom-pill" data-zoom="10">10×</button>
+</div>
+<input type="range" id="camSlider" class="zoom-slider" min="1" max="10" step="0.1" value="1">
+<div class="shutter-wrap">
+<button class="shutter" id="camShoot" aria-label="Capture"></button>
+</div>
+</div>
+</div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/enhance.js"></script>
+<script src="js/crop.js"></script>
+<script src="js/compress.js"></script>
+<script src="js/text-overlay.js"></script>
+<script src="js/ocr.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/lens.js"></script>
+</body>
+</html>
