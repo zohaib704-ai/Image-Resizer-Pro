@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ImageResizer Pro</title>
+<meta name="description" content="Get in touch — feedback, bug reports, feature requests.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+<nav>
+<div class="logo"><a href="index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
+<div class="nav-links">
+<a href="index.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html" class="active">Contact</a>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mobile-menu" id="mobileMenu">
+<a href="index.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="privacy.html">Privacy</a>
+<a href="terms.html">Terms</a>
+</div>
+</nav>
+</header>
+
+<main class="page">
+<div class="container">
+<div class="page-header">
+<span class="section-num">CONTACT</span>
+<h1>Say hello.</h1>
+<p>Bug reports, feature ideas, or a note about how you're using these tools — all welcome.</p>
+</div>
+
+<div class="content">
+<form class="form" id="contactForm" novalidate>
+<div class="ctrl"><label>Your name</label><input type="text" name="name" required></div>
+<div class="ctrl"><label>Your email</label><input type="email" name="email" required></div>
+<div class="ctrl"><label>Subject</label><input type="text" name="subject" required></div>
+<div class="ctrl"><label>Message</label><textarea name="message" rows="5" required></textarea></div>
+<div class="status" id="formStatus"></div>
+<button type="submit" class="btn btn-primary submit">Send Message →</button>
+</form>
+
+<h2 style="margin-top:60px;">How this works</h2>
+<p>The form uses <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> — a free service that forwards submissions to my inbox. No backend required. If you'd rather email directly, use <strong>hello@imageresizerpro.example</strong> (replace with your real address).</p>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>ImageResizer<em>Pro</em></h3>
+<p>Ten free tools for image editing, compression, and OCR. All local, all private.</p>
+</div>
+<div class="footer-col">
+<h4>Tools</h4>
+<a href="index.html">Enhance</a><a href="index.html">Crop</a><a href="index.html">Compress</a><a href="index.html">OCR</a>
+</div>
+<div class="footer-col">
+<h4>Site</h4>
+<a href="blog.html">Blog</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+</div>
+</div>
+<div class="footer-bottom">© 2026 ImageResizer Pro · Built in the browser</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('active');
+});
+
+// ---- CONTACT FORM ----
+// SETUP: 1) Go to https://formspree.io, create a free form, copy the endpoint URL
+// 2) Paste it below replacing the placeholder
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    const btn = form.querySelector('button[type="submit"]');
+
+    const data = new FormData(form);
+
+    if (FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+        status.textContent = '⚠ Formspree not configured yet — see the comment in contact.html to enable sending.';
+        status.className = 'status show error';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.className = 'status';
+
+    try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+            status.textContent = '✓ Message sent. I\'ll reply soon.';
+            status.className = 'status show';
+            form.reset();
+        } else {
+            status.textContent = '✗ Something went wrong. Please try again.';
+            status.className = 'status show error';
+        }
+    } catch (err) {
+        status.textContent = '✗ Network error. Please try again.';
+        status.className = 'status show error';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Send Message →';
+});
+</script>
+</body>
+</html>
