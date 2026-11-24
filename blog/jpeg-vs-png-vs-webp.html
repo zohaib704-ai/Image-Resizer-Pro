@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPEG vs PNG vs WebP — Which Format Should You Use? — ImageResizer Pro</title>
+<meta name="description" content="The honest trade-offs between JPEG, PNG, and WebP — and how to pick the right format for photos, screenshots, and graphics.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo"><a href="../index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
+<div class="nav-links">
+<a href="../index.html">Tools</a>
+<a href="index.html" class="active">Blog</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mobile-menu" id="mobileMenu">
+<a href="../index.html">Tools</a><a href="index.html">Blog</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a>
+</div>
+</nav>
+</header>
+
+<main class="page">
+<div class="container">
+<a href="index.html" class="article-back">← All articles</a>
+<div class="page-header">
+<span class="section-num">FORMATS</span>
+<h1>JPEG vs PNG vs WebP: which one should you use?</h1>
+<p>Three formats. Three different jobs. Pick the wrong one and your page loads slower for no visual gain.</p>
+<div class="article-meta">
+<span>Jan 8, 2026</span>
+<span>5 min read</span>
+<span>By the editors</span>
+</div>
+</div>
+
+<div class="content">
+<h2>The short answer</h2>
+<ul>
+<li><strong>Photos → JPEG or WebP.</strong></li>
+<li><strong>Logos, icons, screenshots with text → PNG.</strong></li>
+<li><strong>Photos on a modern site → WebP (best of both).</strong></li>
+</ul>
+<p>If that's all you need, stop reading. The rest is the reasoning behind those rules — useful when you're deciding case-by-case.</p>
+
+<h2>JPEG: the photo workhorse</h2>
+<p>JPEG has been the default for photographs since the early '90s. It uses <em>lossy</em> compression — meaning it discards visual information the eye is unlikely to notice. At 75–85% quality, a photo is typically indistinguishable from the original while being 5–15× smaller.</p>
+<p><strong>Strengths:</strong> tiny files for photos, universal support, adjustable quality.</p>
+<p><strong>Weaknesses:</strong> no transparency, gets ugly fast at low quality, terrible for text (edges smear).</p>
+
+<h2>PNG: the crisp lossless format</h2>
+<p>PNG uses <em>lossless</em> compression — every pixel is preserved exactly. That makes it perfect for anything with sharp edges, flat colours, or transparency: logos, charts, screenshots of UIs, images with text.</p>
+<p><strong>Strengths:</strong> pixel-perfect, supports transparency, excellent for graphics.</p>
+<p><strong>Weaknesses:</strong> photos become huge (2–5× the size of equivalent JPEG). No way to "compress more" without losing quality.</p>
+<p>A common mistake: people screenshot a photo and save it as PNG. That's a 3 MB file where a 200 KB JPEG would look identical on screen.</p>
+
+<h2>WebP: the modern default</h2>
+<p>WebP was developed by Google and released in 2010. It supports both lossy and lossless compression, plus transparency — so it can replace JPEG <em>and</em> PNG for most use cases. It typically produces files 25–35% smaller than JPEG at the same visual quality.</p>
+<p><strong>Strengths:</strong> smaller files than both JPEG and PNG, supports transparency, supports animation.</p>
+<p><strong>Weaknesses:</strong> slightly less universal than JPEG (older software may reject it), some CMS platforms still don't accept it as an upload format.</p>
+<p>Every modern browser supports WebP — Chrome, Firefox, Safari (14+), Edge. As of 2026 it's safe to serve it.</p>
+
+<h2>The decision tree</h2>
+<ol>
+<li>Is it a photograph or a photorealistic image?
+    <ul>
+        <li>Yes → use <strong>WebP</strong> if the platform accepts it, otherwise <strong>JPEG at 80%</strong>.</li>
+        <li>No, and it has transparency or sharp text → use <strong>PNG</strong>.</li>
+    </ul>
+</li>
+<li>Does the destination site or form reject the format?
+    <ul>
+        <li>Yes → fall back to <strong>JPEG</strong>.</li>
+    </ul>
+</li>
+<li>Are you optimizing for page speed?
+    <ul>
+        <li>Yes → use <strong>WebP</strong>.</li>
+    </ul>
+</li>
+</ol>
+
+<h2>The trap: converting between formats badly</h2>
+<p>Converting a JPEG to PNG makes the file <em>bigger</em> without making it look better — the detail PNG preserves was already lost when the JPEG was first created. Same with JPEG → WebP: you can't recover quality that's already gone.</p>
+<p>The correct direction is always: start from the original, then export once to the format you need.</p>
+
+<h2>What about AVIF?</h2>
+<p>AVIF is the newest format (2019) and compresses 20–50% better than WebP. Browser support is now universal as of 2025, but encoding is slower and some platforms still don't accept it. It's a future-proof choice, but WebP remains the safest "modern" default for now.</p>
+
+<div class="article-cta">
+<div>
+<h3>Convert in one click</h3>
+<p>Export any image as JPEG, PNG, or WebP — free, local, no uploads.</p>
+</div>
+<a href="../index.html" class="btn btn-primary">Open the Compress Tool →</a>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>ImageResizer<em>Pro</em></h3><p>Ten free tools for image editing, compression, and OCR. All local, all private.</p></div>
+<div class="footer-col"><h4>Tools</h4><a href="../index.html">Enhance</a><a href="../index.html">Crop</a><a href="../index.html">Compress</a><a href="../index.html">OCR</a></div>
+<div class="footer-col"><h4>Site</h4><a href="index.html">Blog</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+<div class="footer-col"><h4>Legal</h4><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div>
+</div>
+<div class="footer-bottom">© 2026 ImageResizer Pro · Built in the browser</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>
