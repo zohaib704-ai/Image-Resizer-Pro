@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://image-resizer-pro.pages.dev/sitemap.xml
