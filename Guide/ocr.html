@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Text From an Image — ImageResizer Pro</title>
+<meta name="description" content="Extract printed text from any photo in eight languages, without uploading anything.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo"><a href="../index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
+<div class="nav-links">
+<a href="../index.html">Tools</a>
+<a href="index.html" class="active">Guides</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mobile-menu" id="mobileMenu">
+<a href="../index.html">Tools</a><a href="index.html">Guides</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a>
+</div>
+</nav>
+</header>
+
+<main class="page">
+<div class="container">
+<a href="index.html" class="article-back">← All guides</a>
+<div class="page-header">
+<span class="section-num">TEXT</span>
+<h1>How to read text from an image</h1>
+<p>Extract printed text from any photo in eight languages — entirely in your browser.</p>
+<div class="article-meta">
+<span>Jan 8, 2026</span>
+<span>5 min read</span>
+<span>By the editors</span>
+</div>
+</div>
+
+<div class="content">
+<h2>What this tool does</h2>
+<p>The Read Text (OCR) tool uses Tesseract.js — an open-source OCR engine compiled to WebAssembly — to detect and extract printed text from your image. It supports eight languages: English, Urdu, Arabic, Hindi, French, Spanish, German, and Simplified Chinese. The first time you use a language, its model downloads once (~10–15 seconds); after that it's cached by your browser. Your image never leaves your device.</p>
+
+<h2>When to use it</h2>
+<ul>
+<li>Copy-pasting text from a screenshot, PDF screenshot, or phone photo.</li>
+<li>Digitising a scanned receipt, invoice, or form.</li>
+<li>Extracting text from a slide, poster, or menu you photographed.</li>
+<li>Making a document searchable by converting it to text.</li>
+</ul>
+
+<h2>Step-by-step</h2>
+<ol>
+<li>Upload your image and open <strong>Read Text (OCR)</strong>.</li>
+<li>Pick the <strong>language</strong> of the text in the image. If it's mostly English, leave the default.</li>
+<li>Click <strong>Extract Text</strong>. The first run downloads the language model.</li>
+<li>Wait for progress to finish. Recognition takes a few seconds for most images.</li>
+<li>The extracted text appears in the box below. Click <strong>Copy Text</strong> to grab it.</li>
+</ol>
+
+<h2>Tips for best results</h2>
+<ul>
+<li><strong>High resolution wins.</strong> 300 DPI scans or a full-resolution phone photo produce far more accurate text than a downscaled one.</li>
+<li><strong>Straight, not tilted.</strong> A 5° tilt noticeably cuts accuracy. Rotate before OCR.</li>
+<li><strong>High contrast.</strong> Use the Enhance tool to push Contrast to 130–150% before OCR. This alone often improves accuracy by 5–10%.</li>
+<li><strong>Crop tight.</strong> Remove logos, photos, and borders — the engine reads them as noise.</li>
+<li><strong>One language per image.</strong> Mixed-language pages reduce accuracy for both languages.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Wrong language model.</strong> Running English text through the Urdu model produces gibberish. Always match the language.</li>
+<li><strong>Expecting handwriting.</strong> Tesseract is trained on printed text. Cursive handwriting is unreliable (30–60% accuracy at best).</li>
+<li><strong>OCR on a blurred or compressed image.</strong> Sharp edges are essential. If you must compress first, keep quality above 80%.</li>
+<li><strong>Reading multi-column layouts.</strong> Columns get interleaved. Crop each column separately and run OCR on each.</li>
+</ul>
+
+<div class="article-cta">
+<div>
+<h3>Extract text now</h3>
+<p>Eight languages, no uploads, works offline after first load.</p>
+</div>
+<a href="../index.html" class="btn btn-primary">Open the OCR tool →</a>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>ImageResizer<em>Pro</em></h3><p>Ten free tools for image editing, compression, and OCR. All local, all private.</p></div>
+<div class="footer-col"><h4>Tools</h4><a href="../index.html">Enhance</a><a href="../index.html">Crop</a><a href="../index.html">Compress</a><a href="../index.html">OCR</a></div>
+<div class="footer-col"><h4>Site</h4><a href="index.html">Guides</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+<div class="footer-col"><h4>Legal</h4><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div>
+</div>
+<div class="footer-bottom">© 2026 ImageResizer Pro · Built in the browser</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>
