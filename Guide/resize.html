@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Resize a Photo — ImageResizer Pro</title>
+<meta name="description" content="Set exact pixel dimensions with aspect-ratio lock. No distortion, no guessing.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+<nav>
+<div class="logo"><a href="../index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
+<div class="nav-links">
+<a href="../index.html">Tools</a>
+<a href="index.html" class="active">Guides</a>
+<a href="../about.html">About</a>
+<a href="../contact.html">Contact</a>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="mobile-menu" id="mobileMenu">
+<a href="../index.html">Tools</a><a href="index.html">Guides</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a>
+</div>
+</nav>
+</header>
+
+<main class="page">
+<div class="container">
+<a href="index.html" class="article-back">← All guides</a>
+<div class="page-header">
+<span class="section-num">DIMENSIONS</span>
+<h1>How to resize a photo</h1>
+<p>Set exact pixel dimensions without distorting the image, using the aspect-ratio lock.</p>
+<div class="article-meta">
+<span>Jan 11, 2026</span>
+<span>4 min read</span>
+<span>By the editors</span>
+</div>
+</div>
+
+<div class="content">
+<h2>What this tool does</h2>
+<p>The Resize tool lets you enter a target width and height in pixels. With <strong>Lock aspect ratio</strong> enabled (the default), changing one dimension automatically recalculates the other — so the image never squishes or stretches. When you click <strong>Apply Resize</strong>, the canvas is redrawn at the new dimensions using high-quality downscaling.</p>
+
+<h2>When to use it</h2>
+<ul>
+<li>Meeting an upload form's pixel cap (e.g. "max 1200 × 1200 px").</li>
+<li>Making thumbnails for a website or email.</li>
+<li>Matching a display size so the browser doesn't downscale (which wastes bandwidth).</li>
+<li>Preparing images for a specific print size.</li>
+</ul>
+
+<h2>Step-by-step</h2>
+<ol>
+<li>Upload your image and open the <strong>Resize</strong> tool. The current dimensions appear in the fields.</li>
+<li>Keep <strong>Locked</strong> selected under the ratio dropdown — this is what prevents distortion.</li>
+<li>Change <strong>Width</strong> to your target. The height updates automatically.</li>
+<li>Or change <strong>Height</strong> — the width updates to match.</li>
+<li>Click <strong>Apply Resize</strong>.</li>
+</ol>
+
+<h2>Tips for best results</h2>
+<ul>
+<li><strong>Downscale, don't upscale.</strong> Shrinking an image looks clean. Enlarging it stretches pixels and produces blur. Never upscale unless you have no choice.</li>
+<li><strong>Downscale in steps for very large reductions.</strong> Halving 4000 → 2000 → 1000 looks better than jumping straight from 4000 → 1000. (This app handles it automatically, but good to know.)</li>
+<li><strong>Match the display size.</strong> If your site shows the image at 600px wide, don't serve a 3000px file. Browsers shrink it visually, but the full file still downloads.</li>
+<li><strong>Resize before compressing.</strong> Fewer pixels = a smaller compressed file for the same visual quality.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Upscaling a small photo.</strong> A 500px photo blown up to 2000px is blurry no matter what. Start with a bigger source or accept the small size.</li>
+<li><strong>Unlocking the ratio by accident.</strong> You get a stretched image. If you need a different shape, <strong>crop</strong> instead — don't distort.</li>
+<li><strong>Entering 0 or leaving a field empty.</strong> The tool rejects invalid sizes; if you see no change, check the values.</li>
+<li><strong>Resizing after cropping to a ratio.</strong> You can resize after cropping — that's fine. What's wrong is resizing <em>to fix</em> a crop you got wrong. Crop first, resize second.</li>
+</ul>
+
+<div class="article-cta">
+<div>
+<h3>Resize to exact pixels</h3>
+<p>Aspect-locked, high-quality downscaling, no distortion.</p>
+</div>
+<a href="../index.html" class="btn btn-primary">Open the Resize tool →</a>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>ImageResizer<em>Pro</em></h3><p>Ten free tools for image editing, compression, and OCR. All local, all private.</p></div>
+<div class="footer-col"><h4>Tools</h4><a href="../index.html">Enhance</a><a href="../index.html">Crop</a><a href="../index.html">Compress</a><a href="../index.html">OCR</a></div>
+<div class="footer-col"><h4>Site</h4><a href="index.html">Guides</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+<div class="footer-col"><h4>Legal</h4><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a></div>
+</div>
+<div class="footer-bottom">© 2026 ImageResizer Pro · Built in the browser</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('active');
+});
+</script>
+</body>
+</html>
