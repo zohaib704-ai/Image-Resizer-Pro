@@ -278,10 +278,17 @@
 
         // Tool cards
         document.querySelectorAll('.tool-card[data-open]').forEach(card => {
-            card.addEventListener('click', () => {
-                App.activateTool(card.dataset.open);
-            });
-        });
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('.tool-guide-link')) return;
+        App.activateTool(card.dataset.open);
+    });
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            App.activateTool(card.dataset.open);
+        }
+    });
+});
 
         // Footer links with data-open
         document.querySelectorAll('a[data-open]').forEach(a => {
