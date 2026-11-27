@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ImageResizer Pro — Free Browser Image Editor, Compressor & OCR</title>
+<title>ImageResizer Pro — Free Browser Image Editor, Compressor &amp; OCR</title>
 <meta name="description" content="Ten free image tools in your browser: enhance, filter, crop, resize, compress, add text, read text (OCR), camera with zoom, and Google Lens. No uploads, no signup.">
-
 <meta name="theme-color" content="#f6f1e7">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://image-resizer-pro.pages.dev/" />
+<link rel="canonical" href="https://image-resizer-pro.pages.dev/">
 
-<!-- Open Graph / WhatsApp / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://image-resizer-pro.pages.dev/" />
-<meta property="og:title" content="ImageResizer Pro — Free Browser Image Editor, Compressor & OCR" />
-<meta property="og:description" content="Ten free image tools in your browser: enhance, filter, crop, resize, compress, add text, read text (OCR), camera with zoom, and Google Lens. No uploads, no signup." />
-<meta property="og:image" content="https://image-resizer-pro.pages.dev/preview.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="ImageResizer Pro" />
+<!-- Open Graph (text-only — no preview image) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://image-resizer-pro.pages.dev/">
+<meta property="og:title" content="ImageResizer Pro — Edit, compress &amp; read your photos right in the browser">
+<meta property="og:description" content="Ten free image tools in your browser: enhance, filter, crop, resize, compress, add text, read text (OCR), camera with zoom, and Google Lens. No uploads, no signup.">
+<meta property="og:site_name" content="ImageResizer Pro">
 
+<!-- Twitter / X (text-only) -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://image-resizer-pro.pages.dev/">
+<meta name="twitter:title" content="ImageResizer Pro — Edit, compress &amp; read your photos right in the browser">
+<meta name="twitter:description" content="Ten free image tools in your browser: enhance, filter, crop, resize, compress, add text, read text (OCR), camera with zoom, and Google Lens. No uploads, no signup.">
 
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231c1a15'/%3E%3Ctext x='50' y='68' font-family='Georgia, serif' font-size='56' font-weight='bold' text-anchor='middle' fill='%23f6f1e7'%3EIR%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
 <link rel="stylesheet" href="css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
@@ -35,14 +36,14 @@
 <div class="logo"><a href="index.html"><h1>ImageResizer<em>Pro</em></h1></a></div>
 <div class="nav-links">
 <a href="index.html" class="active">Tools</a>
-<a href="Guide/index.html">Guides</a>
+<a href="guide/index.html">Guides</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </div>
 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
 <div class="mobile-menu" id="mobileMenu">
 <a href="index.html">Tools</a>
-<a href="Guide/index.html">Guides</a>
+<a href="guide/index.html">Guides</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 <a href="privacy.html">Privacy</a>
@@ -102,7 +103,10 @@
 <div class="tool-panel" data-tool="enhance">
 <div class="panel-head">
 <div class="panel-title"><h3>Enhance</h3><small>Adjust</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/enhance.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Tune the lighting, colour, and clarity. Changes preview live — click Apply to commit.</p>
@@ -123,7 +127,10 @@
 <div class="tool-panel" data-tool="filters">
 <div class="panel-head">
 <div class="panel-title"><h3>Filters</h3><small>One-tap looks</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/filters.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Pick a preset. Apply to commit it permanently to the image.</p>
@@ -149,7 +156,10 @@
 <div class="tool-panel" data-tool="transform">
 <div class="panel-head">
 <div class="panel-title"><h3>Rotate &amp; Flip</h3><small>Orientation</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/rotate-flip.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">These actions commit immediately — no Apply needed.</p>
@@ -166,7 +176,10 @@
 <div class="tool-panel" data-tool="crop">
 <div class="panel-head">
 <div class="panel-title"><h3>Crop</h3><small>Drag to select</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/crop.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Drag the handles to select your crop. Pick a ratio or crop freely.</p>
@@ -191,7 +204,10 @@
 <div class="tool-panel" data-tool="resize">
 <div class="panel-head">
 <div class="panel-title"><h3>Resize</h3><small>Dimensions</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/resize.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Enter new dimensions in pixels. Keep the aspect ratio locked unless you need a custom shape.</p>
@@ -215,7 +231,10 @@
 <div class="tool-panel" data-tool="compress">
 <div class="panel-head">
 <div class="panel-title"><h3>Compress</h3><small>File size</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/compress.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Pick a quality level and format, then download the compressed version.</p>
@@ -238,7 +257,10 @@
 <div class="tool-panel" data-tool="text">
 <div class="panel-head">
 <div class="panel-title"><h3>Add Text</h3><small>Caption</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/add-text.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Type a caption. Preview updates live. Apply to bake it in.</p>
@@ -261,7 +283,10 @@
 <div class="tool-panel" data-tool="ocr">
 <div class="panel-head">
 <div class="panel-title"><h3>Read Text (OCR)</h3><small>Tesseract</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/ocr.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Extract text from any image. The engine runs locally — no image is uploaded.</p>
@@ -288,7 +313,10 @@
 <div class="tool-panel" data-tool="camera">
 <div class="panel-head">
 <div class="panel-title"><h3>Camera</h3><small>Live capture</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/camera.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Opens a full-screen camera with 1×–10× zoom. Requires camera permission from your browser.</p>
@@ -300,7 +328,10 @@
 <div class="tool-panel" data-tool="lens">
 <div class="panel-head">
 <div class="panel-title"><h3>Google Lens</h3><small>Visual search</small></div>
+<div class="panel-head-actions">
+<a class="panel-guide" href="guide/lens.html">📖 Guide</a>
 <button class="panel-close" data-close>Close</button>
+</div>
 </div>
 <div class="panel-body">
 <p class="hint">Google Lens needs an image upload, so we'll help you hand it off cleanly: download the current image first, then open Lens in a new tab.</p>
@@ -324,16 +355,56 @@
 <p class="section-sub">Click any card to open that tool. If no image is loaded yet, you'll be prompted to upload one first.</p>
 </div>
 <div class="tools-grid" id="toolsGrid">
-<button class="tool-card" data-open="enhance"><span class="tool-num">01</span><span class="tool-icon">✦</span><span class="tool-name">Enhance</span><span class="tool-desc">Brightness, contrast, warmth, clarity, denoise.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="filters"><span class="tool-num">02</span><span class="tool-icon">◐</span><span class="tool-name">Filters</span><span class="tool-desc">Ten one-tap looks — B&amp;W, sepia, vivid, fade.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="transform"><span class="tool-num">03</span><span class="tool-icon">↻</span><span class="tool-name">Rotate &amp; Flip</span><span class="tool-desc">Straighten, mirror, and flip your photos.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="crop"><span class="tool-num">04</span><span class="tool-icon">◫</span><span class="tool-name">Crop</span><span class="tool-desc">Drag handles. Lock to a ratio. Apply.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="resize"><span class="tool-num">05</span><span class="tool-icon">⇲</span><span class="tool-name">Resize</span><span class="tool-desc">Set exact pixel dimensions with aspect lock.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="compress"><span class="tool-num">06</span><span class="tool-icon">↓</span><span class="tool-name">Compress</span><span class="tool-desc">Shrink JPEG, WEBP, PNG at chosen quality.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="text"><span class="tool-num">07</span><span class="tool-icon">T</span><span class="tool-name">Add Text</span><span class="tool-desc">Captions and watermarks with full control.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="ocr"><span class="tool-num">08</span><span class="tool-icon">◊</span><span class="tool-name">Read Text</span><span class="tool-desc">Extract text from any image in 8 languages.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="camera"><span class="tool-num">09</span><span class="tool-icon">◉</span><span class="tool-name">Camera</span><span class="tool-desc">Live capture with 1×–10× zoom.</span><span class="tool-arrow">→</span></button>
-<button class="tool-card" data-open="lens"><span class="tool-num">10</span><span class="tool-icon">◎</span><span class="tool-name">Google Lens</span><span class="tool-desc">Download and hand off to Lens in one click.</span><span class="tool-arrow">→</span></button>
+<div class="tool-card" data-open="enhance" role="button" tabindex="0">
+<span class="tool-num">01</span><span class="tool-icon">✦</span><span class="tool-name">Enhance</span><span class="tool-desc">Brightness, contrast, warmth, clarity, denoise.</span>
+<a class="tool-guide-link" href="guide/enhance.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="filters" role="button" tabindex="0">
+<span class="tool-num">02</span><span class="tool-icon">◐</span><span class="tool-name">Filters</span><span class="tool-desc">Ten one-tap looks — B&amp;W, sepia, vivid, fade.</span>
+<a class="tool-guide-link" href="guide/filters.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="transform" role="button" tabindex="0">
+<span class="tool-num">03</span><span class="tool-icon">↻</span><span class="tool-name">Rotate &amp; Flip</span><span class="tool-desc">Straighten, mirror, and flip your photos.</span>
+<a class="tool-guide-link" href="guide/rotate-flip.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="crop" role="button" tabindex="0">
+<span class="tool-num">04</span><span class="tool-icon">◫</span><span class="tool-name">Crop</span><span class="tool-desc">Drag handles. Lock to a ratio. Apply.</span>
+<a class="tool-guide-link" href="guide/crop.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="resize" role="button" tabindex="0">
+<span class="tool-num">05</span><span class="tool-icon">⇲</span><span class="tool-name">Resize</span><span class="tool-desc">Set exact pixel dimensions with aspect lock.</span>
+<a class="tool-guide-link" href="guide/resize.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="compress" role="button" tabindex="0">
+<span class="tool-num">06</span><span class="tool-icon">↓</span><span class="tool-name">Compress</span><span class="tool-desc">Shrink JPEG, WEBP, PNG at chosen quality.</span>
+<a class="tool-guide-link" href="guide/compress.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="text" role="button" tabindex="0">
+<span class="tool-num">07</span><span class="tool-icon">T</span><span class="tool-name">Add Text</span><span class="tool-desc">Captions and watermarks with full control.</span>
+<a class="tool-guide-link" href="guide/add-text.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="ocr" role="button" tabindex="0">
+<span class="tool-num">08</span><span class="tool-icon">◊</span><span class="tool-name">Read Text</span><span class="tool-desc">Extract text from any image in 8 languages.</span>
+<a class="tool-guide-link" href="guide/ocr.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="camera" role="button" tabindex="0">
+<span class="tool-num">09</span><span class="tool-icon">◉</span><span class="tool-name">Camera</span><span class="tool-desc">Live capture with 1×–10× zoom.</span>
+<a class="tool-guide-link" href="guide/camera.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
+<div class="tool-card" data-open="lens" role="button" tabindex="0">
+<span class="tool-num">10</span><span class="tool-icon">◎</span><span class="tool-name">Google Lens</span><span class="tool-desc">Download and hand off to Lens in one click.</span>
+<a class="tool-guide-link" href="guide/lens.html">📖 Guide</a>
+<span class="tool-arrow">→</span>
+</div>
 </div>
 </div>
 </section>
@@ -351,7 +422,7 @@
 <h2>Do my images get uploaded?</h2>
 <p>No. Every operation happens in your browser via JavaScript. Your images never touch a server, and we never see them. Close the tab and everything is gone.</p>
 <h2>What happens if my camera doesn't work?</h2>
-<p>Some browsers require HTTPS. On Vercel you're already on HTTPS, so it should work after you grant permission. On iOS Safari, only one camera stream can be active at a time — close other camera tabs first.</p>
+<p>Some browsers require HTTPS. On Cloudflare Pages you're already on HTTPS, so it should work after you grant permission. On iOS Safari, only one camera stream can be active at a time — close other camera tabs first.</p>
 <h2>Is this really free?</h2>
 <p>Yes. The site is supported by non-intrusive advertising, so every tool stays free. No accounts, no paywalls.</p>
 <h2>Which formats can I upload and export?</h2>
@@ -376,7 +447,7 @@
 </div>
 <div class="footer-col">
 <h4>Site</h4>
-<a href="Guide/index.html">Guides</a>
+<a href="guide/index.html">Guides</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
 </div>
