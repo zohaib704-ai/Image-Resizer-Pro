@@ -141,6 +141,18 @@ commitEffects() {
     });
 },
 
+// The live canvas — always has base image + uncommitted effects rendered on top
+getCurrentCanvas() {
+    return document.getElementById('canvas');
+},
+
+// Snapshot the current canvas as a PNG data URL (includes all visible edits)
+getCurrentDataURL() {
+    const canvas = this.getCurrentCanvas();
+    return canvas ? canvas.toDataURL('image/png') : null;
+},
+
+       
         // Replace the base image completely (crop, resize, camera, transform)
         setBaseImage(img) {
             this.baseImage = img;
