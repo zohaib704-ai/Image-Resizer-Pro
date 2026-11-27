@@ -15,7 +15,7 @@
         if (cropper) { try { cropper.destroy(); } catch (e) {} cropper = null; }
 
         // Flush uncommitted effects into the crop source
-        const source = document.getElementById('canvas').toDataURL('image/png');
+        const source = App.getCurrentDataURL();
         img.onload = () => {
             img.onload = null;
             cropper = new Cropper(img, {
