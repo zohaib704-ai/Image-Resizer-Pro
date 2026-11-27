@@ -1191,3 +1191,19 @@ footer {
     border: 1px solid var(--rule);
 }
 .guide-grid .post-card { min-height: 200px; }
+
+.panel-head-actions { display: flex; gap: 8px; align-items: center; }
+.panel-guide {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3);
+    border: 1px solid var(--rule-2); padding: 6px 12px; background: transparent; transition: all 0.15s;
+}
+.panel-guide:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tool-guide-link {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-3); border: none; padding: 3px 0; margin-top: 2px; transition: color 0.15s;
+}
+.tool-guide-link:hover { color: var(--accent); border: none; }
+.tool-card.active .tool-guide-link { color: var(--ink-4); }
+.tool-card.active .tool-guide-link:hover { color: var(--accent-soft); }
