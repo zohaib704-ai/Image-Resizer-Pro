@@ -123,18 +123,23 @@
         },
 
         // Take the current canvas (base + effects) and make it the new base
-        commitEffects() {
-            const canvas = document.getElementById('canvas');
-            if (!canvas) return;
-            const dataUrl = canvas.toDataURL('image/png');
-            const img = new Image();
-            img.onload = () => {
-                this.baseImage = img;
-                this.resetEffects();
-                this.render();
-            };
-            img.src = dataUrl;
-        },
+// Returns a Promise that resolves once baseImage is updated
+commitEffects() {
+    return new Promise((resolve) => {
+        const canvas = document.getElementById('canvas');
+        if (!canvas) { resolve(null); return; }
+        const dataUrl = canvas.toDataURL('image/png');
+        const img = new Image();
+        img.onload = () => {
+            this.baseImage = img;
+            this.resetEffects();
+            this.render();
+            resolve(img);
+        };
+        img.onerror = () => resolve(null);
+        img.src = dataUrl;
+    });
+},
 
         // Replace the base image completely (crop, resize, camera, transform)
         setBaseImage(img) {
