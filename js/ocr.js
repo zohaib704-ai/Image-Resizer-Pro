@@ -32,8 +32,13 @@
                                 progress.textContent = `Reading… ${Math.round(m.progress * 100)}%`;
                             }
                         }
-                    });
-                    const { data: { text } } = await worker.recognize(App.baseImage);
+                    // Snapshot the current canvas so uncommitted Enhance/filter edits are included
+const currentImage = App.getCurrentDataURL();
+if (!currentImage) {
+    progress.textContent = 'Error: no image on canvas.';
+    return;
+}
+const { data: { text } } = await worker.recognize(currentImage);
                     result.textContent = text.trim() || '(No text detected)';
                     progress.style.display = 'none';
                 } catch (err) {
