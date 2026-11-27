@@ -1136,3 +1136,58 @@ footer {
     .footer-grid { grid-template-columns: 1fr; }
     .stat-num { font-size: 1.3rem; }
 }
+
+/* ---------- TOOL CARD GUIDE LINK ---------- */
+.tool-guide-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: none;
+    padding: 3px 0;
+    margin-top: 2px;
+    transition: color 0.15s;
+}
+.tool-guide-link:hover {
+    color: var(--accent);
+    border: none;
+}
+.tool-card.active .tool-guide-link { color: var(--ink-4); }
+.tool-card.active .tool-guide-link:hover { color: var(--accent-soft); }
+
+/* ---------- PANEL HEAD GUIDE LINK ---------- */
+.panel-head-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.panel-guide {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--rule-2);
+    padding: 6px 12px;
+    background: transparent;
+    transition: all 0.15s;
+}
+.panel-guide:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+}
+
+/* ---------- GUIDE LISTING (reuse blog-grid) ---------- */
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+}
+.guide-grid .post-card { min-height: 200px; }
