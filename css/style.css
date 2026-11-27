@@ -1046,57 +1046,93 @@ footer {
     color: var(--error);
 }
 
-/* ---------- TOOL CARD GUIDE LINK ---------- */
-.tool-guide-link {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    border: none;
-    padding: 3px 0;
-    margin-top: 2px;
-    transition: color 0.15s;
-}
-.tool-guide-link:hover {
-    color: var(--accent);
-    border: none;
-}
-.tool-card.active .tool-guide-link { color: var(--ink-4); }
-.tool-card.active .tool-guide-link:hover { color: var(--accent-soft); }
-
-/* ---------- PANEL HEAD GUIDE LINK ---------- */
-.panel-head-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-.panel-guide {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    border: 1px solid var(--rule-2);
-    padding: 6px 12px;
-    background: transparent;
-    transition: all 0.15s;
-}
-.panel-guide:hover {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-}
-
-/* ---------- GUIDE LISTING (reuse blog-grid) ---------- */
-.guide-grid {
+/* ---------- BLOG ---------- */
+.blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1px;
     background: var(--rule);
     border: 1px solid var(--rule);
 }
-.guide-grid .post-card { min-height: 200px; }
+.post-card {
+    background: var(--white);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: background 0.2s;
+}
+.post-card:hover { background: var(--paper); }
+.post-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 700;
+}
+.post-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.post-card h3 a { border: none; }
+.post-card h3 a:hover { color: var(--accent); }
+.post-card p {
+    font-size: 0.9rem;
+    color: var(--ink-3);
+    line-height: 1.6;
+    flex: 1;
+}
+.post-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-4);
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ---------- MISC ---------- */
+.download-tip {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 860px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .hero { padding: 60px 0 70px; }
+    .hero::before { font-size: 120px; top: 30px; right: 20px; }
+    .hero-stats { gap: 28px; }
+    .section { padding: 60px 0; }
+    .section-head { flex-direction: column; align-items: flex-start; }
+    .tools-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .tool-card { padding: 22px 18px; }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+    .footer-brand { grid-column: 1 / -1; }
+    .ws-toolbar { flex-direction: column; align-items: flex-start; }
+    .canvas-area { padding: 14px; min-height: 220px; }
+    .panel-head { padding: 16px 18px; }
+    .panel-body { padding: 20px 18px; }
+    .ctrl-row { grid-template-columns: 1fr; }
+    .transform-grid { grid-template-columns: repeat(2, 1fr); }
+    .modal { padding: 0; }
+    .modal-inner { max-height: 100vh; height: 100vh; }
+}
+@media (max-width: 480px) {
+    .container { padding: 0 18px; }
+    .hero-actions { width: 100%; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stat-num { font-size: 1.3rem; }
+}
