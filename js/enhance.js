@@ -59,17 +59,16 @@
             });
         }
 
-        // TRANSFORM
-        document.querySelectorAll('.transform-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const action = btn.dataset.transform;
-                if (!App.baseImage) return;
-                // Flush any pending effects first
-                if (App.hasUncommittedEffects()) App.commitEffects();
-                // Need to wait a tick for commit to complete
-                setTimeout(() => applyTransform(action), 20);
-            });
-        });
+// TRANSFORM
+document.querySelectorAll('.transform-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const action = btn.dataset.transform;
+        if (!App.baseImage) return;
+        // Flush pending effects, then transform — guaranteed order
+        await App.commitEffects();
+        applyTransform(action);
+    });
+});
     });
 
     function resetEnhanceUI() {
